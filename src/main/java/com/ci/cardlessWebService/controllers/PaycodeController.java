@@ -5,10 +5,7 @@ import com.ci.cardlessWebService.dtos.CancelPaycodeResponse;
 import com.ci.cardlessWebService.dtos.PaycodeResponse;
 import com.ci.cardlessWebService.models.Paycode;
 import com.ci.cardlessWebService.services.PaycodeService;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/paycode")
@@ -20,14 +17,14 @@ public class PaycodeController {
         this.paycodeService = paycodeService;
     }
 
-    @PostMapping("/generatePaycode")
-    public PaycodeResponse generatePaycode(@RequestBody Paycode request) {
+    @PostMapping("/generate_paycode")
+    public PaycodeResponse generatePaycode(@RequestBody Paycode request, @RequestParam(name = "countryCode") String countryCode) {
 
-        PaycodeResponse response = paycodeService.generatePaycode(request);
+        PaycodeResponse response = paycodeService.generatePaycode(request,countryCode);
 
         return response;
     }
-    @PostMapping("/cancelPaycode")
+    @PostMapping("/cancel_paycode")
     public CancelPaycodeResponse cancelPaycode(@RequestBody CancelPaycodeRequest request) {
 
         CancelPaycodeResponse response = paycodeService.cancelPaycode(request);

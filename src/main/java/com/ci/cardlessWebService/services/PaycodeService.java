@@ -6,7 +6,7 @@ import com.ci.cardlessWebService.dtos.PaycodeResponse;
 import com.ci.cardlessWebService.models.Paycode;
 
 public interface PaycodeService {
-    PaycodeResponse generatePaycode(Paycode request);
+    PaycodeResponse generatePaycode(Paycode request,String countryCode);
 
     CancelPaycodeResponse cancelPaycode(CancelPaycodeRequest request);
 }
